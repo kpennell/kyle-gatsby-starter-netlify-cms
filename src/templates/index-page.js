@@ -159,7 +159,7 @@ query IndexPageTemplate {
             }
           }
         }
-        heading
+
         subheading
         description
         intro {
@@ -173,8 +173,7 @@ query IndexPageTemplate {
             }
             text
           }
-          heading
-          description
+
         }
       }
     }

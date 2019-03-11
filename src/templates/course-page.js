@@ -2,21 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Features from '../components/Features'
-import Testimonials from '../components/Testimonials'
-import Pricing from '../components/Pricing'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
-export const ProductPageTemplate = ({
+export const CoursesPageTemplate = ({
   image,
   title,
   heading,
   description,
   intro,
   main,
-  testimonials,
-  fullImage,
-  pricing,
+
+
 }) => (
   <section className="section section--gradient">
     <div className="container">
@@ -64,7 +59,7 @@ export const ProductPageTemplate = ({
                 </div>
               </div>
    
-              <Testimonials testimonials={testimonials} />
+            
             </div>
           </div>
         </div>
@@ -73,7 +68,7 @@ export const ProductPageTemplate = ({
   </section>
 )
 
-ProductPageTemplate.propTypes = {
+CoursesPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   heading: PropTypes.string,
@@ -86,21 +81,16 @@ ProductPageTemplate.propTypes = {
     description: PropTypes.string,
 
   }),
-  testimonials: PropTypes.array,
-  fullImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  pricing: PropTypes.shape({
-    heading: PropTypes.string,
-    description: PropTypes.string,
-    plans: PropTypes.array,
-  }),
+
+
 }
 
-const ProductPage = ({ data }) => {
+const CoursePage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
     <Layout>
-      <ProductPageTemplate
+      <CoursesPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
         heading={frontmatter.heading}
@@ -108,14 +98,14 @@ const ProductPage = ({ data }) => {
         intro={frontmatter.intro}
         main={frontmatter.main}
         testimonials={frontmatter.testimonials}
-        fullImage={frontmatter.full_image}
+     
         pricing={frontmatter.pricing}
       />
     </Layout>
   )
 }
 
-ProductPage.propTypes = {
+CoursePage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
@@ -123,9 +113,9 @@ ProductPage.propTypes = {
   }),
 }
 
-export default ProductPage
+export default CoursePage
 
-export const productPageQuery = graphql`
+export const coursePageQuery = graphql`
   query ProductPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
@@ -150,20 +140,14 @@ export const productPageQuery = graphql`
             }
             text
           }
-          heading
-          description
+         
         }
         main {
           heading
           description
           
         }
-        testimonials {
-          author
-          quote
-        }
-      
-       
+
       }
     }
   }
