@@ -11,7 +11,7 @@ export const IndexPageTemplate = ({
   title,
   heading,
   subheading,
-  mainpitch,
+
   description,
   intro,
   main,
@@ -61,20 +61,13 @@ export const IndexPageTemplate = ({
       </h3>
       </div>
     </div>
-  <section className="section section--gradient">
+  <section className="section section--gradient" style={{padding:"1.5rem"}}>
     <div className="container">
       <div className="section">
         <div className="columns">
           <div className="column is-10 is-offset-1">
             <div className="content">
-              <div className="content">
-                <div className="tile">
-                  <h1 className="title">{mainpitch.title}</h1>
-                </div>
-                <div className="tile">
-                  <h3 className="subtitle">{mainpitch.description}</h3>
-                </div>
-              </div>
+        
               <div className="columns">
                 <div className="column is-12">
                   <h3 className="has-text-weight-semibold is-size-2">
@@ -83,22 +76,25 @@ export const IndexPageTemplate = ({
                   <p>{description}</p>
                 </div>
               </div>
+              <h3 className="has-text-weight-semibold is-size-2">
+                    Front-end Courses
+                  </h3>
               <Features gridItems={intro.blurbs} />
               <div className="columns">
               <div className="column is-12 has-text-centered">
-                <Link className="btn" to="/products">
-                  See all products
+                <Link className="btn" to="/courses">
+                  See all courses
                 </Link>
                 </div>
               </div>
               <div className="column is-12">
                   <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
+                    Latest Technical Posts
                   </h3>
                   <BlogRoll />
                   <div className="column is-12 has-text-centered">
                   <Link className="btn" to="/blog">
-                    Read more
+                    Read Blog
                   </Link>
                   </div>
               </div>
@@ -116,7 +112,7 @@ IndexPageTemplate.propTypes = {
   title: PropTypes.string,
   heading: PropTypes.string,
   subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
+
   description: PropTypes.string,
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
@@ -133,7 +129,7 @@ const IndexPage = ({ data }) => {
         title={frontmatter.title}
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
+
         description={frontmatter.description}
         intro={frontmatter.intro}
       />
@@ -165,10 +161,6 @@ query IndexPageTemplate {
         }
         heading
         subheading
-        mainpitch {
-          title
-          description
-        }
         description
         intro {
           blurbs {

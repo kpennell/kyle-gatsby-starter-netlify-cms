@@ -10,8 +10,10 @@ const FeatureGrid = ({ gridItems }) => (
           <div className="has-text-centered">
             <div
               style={{
-                width: '240px',
+                height: '240px',
+                width:'240px',
                 display: 'inline-block',
+                objectFit: 'cover'
               }}
             >
               <PreviewCompatibleImage imageInfo={item} />
